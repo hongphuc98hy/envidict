@@ -1,17 +1,13 @@
-import React, { useEffect, useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { Icon, Text, View } from 'native-base'
+import React, { useContext } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, View, Icon } from 'native-base'
 import * as Animatable from 'react-native-animatable'
-
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { voiceStoreContext } from '../../../contexts'
+import { routeNames } from '../../../navigations/route-names'
 import { Colors, Typography } from '../../../styles'
 import { FONT_SIZE_14 } from '../../../styles/typography'
-import { RoutesConstants } from '../../../navigations/route-constants'
-import {
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler'
-import { voiceStoreContext } from '../../../contexts'
 
 const FlashCard = (props) => {
   const { word, pronounce, type, explain, data } = props
@@ -24,7 +20,7 @@ const FlashCard = (props) => {
   const navigator = useNavigation()
   const goToWordView = (word) => {
     viewRef.flipOutX(1000)
-    navigator.navigate(RoutesConstants.WordView, { word })
+    navigator.navigate(routeNames.WordView, { word })
     viewRef.fadeIn(500)
   }
 

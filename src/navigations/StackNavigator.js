@@ -1,22 +1,26 @@
-import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-
-import BottomTabNavigator from './BottomTabNavigator'
-import WordView from '../scenes/WordView'
-import MainLearning from '../scenes/MainLearning'
-import LessonList from '../scenes/LessonList'
-import LessonDetail from '../scenes/LessonDetail'
-import LearnNow from '../scenes/LearnNow'
-import ListWord from '../scenes/ListWord'
-import OnlineTranslation from '../scenes/OnlineTranslation'
-import { Colors } from '../styles'
-import SearchWord from '../scenes/SearchWord'
-import { RoutesConstants } from './route-constants'
+import { observer } from 'mobx-react'
+import React, { useContext } from 'react'
 import SettingsRight from '../components/atoms/navigations/SettingsRight'
+import { userStoreContext } from '../contexts'
 import Learning from '../scenes/Learning'
+import LearnNow from '../scenes/LearnNow'
+import LessonDetail from '../scenes/LessonDetail'
+import LessonList from '../scenes/LessonList'
+import ListWord from '../scenes/ListWord'
+import MainLearning from '../scenes/MainLearning'
+import OnlineTranslation from '../scenes/OnlineTranslation'
+import SearchWord from '../scenes/SearchWord'
+import { SignIn } from '../scenes/SignIn'
+import { SignUp } from '../scenes/SignUp'
+import WordView from '../scenes/WordView'
+import { Colors } from '../styles'
+import BottomTabNavigator from './BottomTabNavigator'
+import { routeNames } from './route-names'
 
 const Stack = createStackNavigator()
+
 const headerOptions = {
   headerStyle: {
     backgroundColor: Colors.BLUE_DARK,
@@ -29,7 +33,28 @@ const headerOptions = {
   headerRight: () => <SettingsRight />,
 }
 
-const Routes = () => {
+const StackNavigator = observer(() => {
+  const userStore = useContext(userStoreContext)
+
+  if (!userStore.isLoggedIn) {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name={routeNames.SignIn}
+            component={SignIn}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={routeNames.SignUp}
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -39,17 +64,17 @@ const Routes = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name={RoutesConstants.Learning}
+          name={routeNames.Learning}
           component={Learning}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name={RoutesConstants.WordView}
+          name={routeNames.WordView}
           component={WordView}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.SearchWord}
+          name={routeNames.SearchWord}
           component={SearchWord}
           options={{
             headerShown: false,
@@ -57,38 +82,38 @@ const Routes = () => {
           }}
         />
         <Stack.Screen
-          name={RoutesConstants.LessonDetail}
+          name={routeNames.LessonDetail}
           component={LessonDetail}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.LessonList}
+          name={routeNames.LessonList}
           component={LessonList}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.LearnNow}
+          name={routeNames.LearnNow}
           component={LearnNow}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.MainLearning}
+          name={routeNames.MainLearning}
           component={MainLearning}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.ListWord}
+          name={routeNames.ListWord}
           component={ListWord}
           options={headerOptions}
         />
         <Stack.Screen
-          name={RoutesConstants.OnlineTranslation}
+          name={routeNames.OnlineTranslation}
           component={OnlineTranslation}
           options={headerOptions}
         />
       </Stack.Navigator>
     </NavigationContainer>
   )
-}
+})
 
-export default Routes
+export { StackNavigator }

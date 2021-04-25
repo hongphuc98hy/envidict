@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react'
-import { ScrollView, Button, Text, Alert, BackHandler } from 'react-native'
-
-import { View } from 'native-base'
-
-import { backHandleToExitApp } from '../utils'
-import MainLayout from '../components/templates/MainLayout'
+import { Alert, BackHandler } from 'react-native'
 import Courses from '../components/atoms/courses/Courses'
-import { RoutesConstants } from '../navigations/route-constants'
+import MainLayout from '../components/templates/MainLayout'
+import { routeNames } from '../navigations/route-names'
+import { backHandleToExitApp } from '../utils'
 
 const Learning = ({ navigation }) => {
   useEffect(() => {
@@ -14,7 +11,7 @@ const Learning = ({ navigation }) => {
   }, [])
 
   const handleNavigate = (courseId, image) => {
-    navigation.navigate(RoutesConstants.LessonList, { courseId: courseId, image: image })
+    navigation.navigate(routeNames.LessonList, { courseId: courseId, image: image })
   }
 
   return (

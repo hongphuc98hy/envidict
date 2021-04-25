@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Item, Icon, Input } from 'native-base'
-import { StyleSheet } from 'react-native'
-import { Colors } from '../../../styles'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import { RoutesConstants } from '../../../navigations/route-constants'
+import { Icon, Input, Item } from 'native-base'
+import React, { useState } from 'react'
+import { StyleSheet } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { routeNames } from '../../../navigations/route-names'
+import { Colors } from '../../../styles'
 
 const SearchInput = (props) => {
   const [text, setText] = useState('')
@@ -20,7 +20,7 @@ const SearchInput = (props) => {
         autoFocus={autoFocus}
         onFocus={() => {
           if (isVocabularySearch !== true) {
-            navigator.navigate(RoutesConstants.SearchWord)
+            navigator.navigate(routeNames.SearchWord)
           }
         }}
         onChangeText={(text) => {

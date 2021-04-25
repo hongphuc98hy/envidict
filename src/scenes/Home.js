@@ -1,16 +1,13 @@
+import { Button, Icon, Text, View } from 'native-base'
 import React, { useEffect } from 'react'
-import { Alert, BackHandler } from 'react-native'
-import { Text, View, Button, Icon } from 'native-base'
-import { StyleSheet } from 'react-native'
-import * as Amimatable from 'react-native-animatable'
-
-import MainLayout from '../components/templates/MainLayout'
-import WordOfTheDay from '../components/molecules/word/WordOfTheDay'
-import { backHandleToExitApp } from '../utils'
-import RecentWords from '../components/molecules/home/RecentWords'
-import { Colors } from '../styles'
+import { Alert, BackHandler, StyleSheet } from 'react-native'
 import CurrentVocabularies from '../components/molecules/home/CurrentVocabularies'
-import { RoutesConstants } from '../navigations/route-constants'
+import RecentWords from '../components/molecules/home/RecentWords'
+import WordOfTheDay from '../components/molecules/word/WordOfTheDay'
+import MainLayout from '../components/templates/MainLayout'
+import { routeNames } from '../navigations/route-names'
+import { Colors } from '../styles'
+import { backHandleToExitApp } from '../utils'
 
 const Home = ({ navigation }) => {
   useEffect(() => {
@@ -18,15 +15,15 @@ const Home = ({ navigation }) => {
   }, [])
 
   const onGoToWordView = (data) => {
-    navigation.navigate(RoutesConstants.WordView, { word: data })
+    navigation.navigate(routeNames.WordView, { word: data })
   }
 
   const onClickPreView = () => {
-    navigation.navigate(RoutesConstants.LessonDetail)
+    navigation.navigate(routeNames.LessonDetail)
   }
 
   const onClickPractise = (id, courseId) => {
-    navigation.navigate(RoutesConstants.MainLearning, { id: id, courseId: courseId })
+    navigation.navigate(routeNames.MainLearning, { id: id, courseId: courseId })
   }
 
   const onClickOnlineTranslationButton = () => {
@@ -34,11 +31,11 @@ const Home = ({ navigation }) => {
   }
 
   const onClickLearnNow = () => {
-    navigation.navigate(RoutesConstants.LearnNow)
+    navigation.navigate(routeNames.LearnNow)
   }
 
   const onGoToSearchView = () => {
-    navigation.navigate(RoutesConstants.SearchWord)
+    navigation.navigate(routeNames.SearchWord)
   }
   return (
     <MainLayout

@@ -1,6 +1,7 @@
 import { createContext } from 'react'
-import { DictStore, VoiceStore, TopicStore } from '../stores'
+import { DictStore, TopicStore, UserStore, VoiceStore } from '../stores'
 
-export const voiceStoreContext = createContext(new VoiceStore())
 export const dictStoreContext = createContext(new DictStore())
 export const topicStoreContext = createContext(new TopicStore())
+export const userStoreContext = createContext(new UserStore())
+export const voiceStoreContext = createContext(new VoiceStore())

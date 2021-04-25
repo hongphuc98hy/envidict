@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
-import { Container, View, Button, Tabs, Tab, Icon } from 'native-base'
-
-import NoteView from '../components/organisms/word-view/NoteView'
+import { Button, Container, Icon, Tab, Tabs, View } from 'native-base'
+import React, { useEffect, useState } from 'react'
+import { AsyncStorage, StyleSheet } from 'react-native'
 import DetailsView from '../components/organisms/word-view/DetailsView'
+import NoteView from '../components/organisms/word-view/NoteView'
+import { routeNames } from '../navigations/route-names'
 import { Colors } from '../styles/index'
-import { useNavigation } from '@react-navigation/native'
-import { RoutesConstants } from '../navigations/route-constants'
 
 const WordView = ({ route, navigation }) => {
   const { word } = route.params
@@ -79,7 +77,7 @@ const WordView = ({ route, navigation }) => {
         <Button
           bordered
           style={styles.customButonIconSearch}
-          onPress={() => navigation.navigate(RoutesConstants.SearchWord)}
+          onPress={() => navigation.navigate(routeNames.SearchWord)}
         >
           <Icon style={styles.customIconSearch} name="search" />
         </Button>

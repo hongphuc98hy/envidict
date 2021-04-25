@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Alert, BackHandler, StyleSheet, Text, View } from 'react-native'
-import { List, Separator, Button, Icon } from 'native-base'
-
-import MainLayout from '../components/templates/MainLayout'
+import { Button, Icon, Separator } from 'native-base'
+import React, { useContext, useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import ListItemCourses from '../components/atoms/courses/ListItemCourses'
-import CurrentVocabularies from '../components/molecules/home/CurrentVocabularies'
 import Lesson from '../components/atoms/lesson/Lesson'
-import { Colors } from '../styles'
-import { RoutesConstants } from '../navigations/route-constants'
-import { topicStoreContext } from '../contexts'
-import { Topic } from '../stores/topic'
+import CurrentVocabularies from '../components/molecules/home/CurrentVocabularies'
 import Loading from '../components/organisms/common/Loading'
+import MainLayout from '../components/templates/MainLayout'
+import { topicStoreContext } from '../contexts'
+import { routeNames } from '../navigations/route-names'
+import { Topic } from '../stores/topic'
+import { Colors } from '../styles'
 
 const LessonList = (props) => {
   // const {} =
@@ -48,18 +47,18 @@ const LessonList = (props) => {
   }, [coursesId])
 
   const onClickPreView = () => {
-    props.navigation.navigate(RoutesConstants.LessonDetail)
+    props.navigation.navigate(routeNames.LessonDetail)
   }
 
   const onClickPractise = (id, courseId) => {
-    props.navigation.navigate(RoutesConstants.MainLearning, {
+    props.navigation.navigate(routeNames.MainLearning, {
       id: id,
       courseId: courseId,
     })
   }
 
   const onClickLearnNow = () => {
-    props.navigation.navigate(RoutesConstants.LearnNow)
+    props.navigation.navigate(routeNames.LearnNow)
   }
 
   return (
@@ -80,7 +79,7 @@ const LessonList = (props) => {
             info
             style={styles.buttonChange}
             onPress={() => {
-              props.navigation.push(RoutesConstants.Learning)
+              props.navigation.push(routeNames.Learning)
             }}
           >
             <Icon name="exchange-alt" type="FontAwesome5" style={styles.iconChange} />

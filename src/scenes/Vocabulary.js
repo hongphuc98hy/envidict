@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { Alert, BackHandler } from 'react-native'
 import { List } from 'native-base'
+import React, { useEffect, useState } from 'react'
+import { Alert, BackHandler } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-
-import { backHandleToExitApp } from '../utils'
-import MainLayout from '../components/templates/MainLayout'
 import ListItemVocabulary from '../components/atoms/ListItemVocabulary/ListItemVocabulary'
-import { RoutesConstants } from '../navigations/route-constants'
+import MainLayout from '../components/templates/MainLayout'
+import { routeNames } from '../navigations/route-names'
+import { backHandleToExitApp } from '../utils'
 
 const ArrVocabulary = [
   {
@@ -73,7 +72,7 @@ const Vocabulary = ({ navigation }) => {
           >
             <ListItemVocabulary
               nameVocabulary={item.name}
-              onPressListItem={() => navigation.navigate(RoutesConstants.ListWord)}
+              onPressListItem={() => navigation.navigate(routeNames.ListWord)}
             />
           </Animatable.View>
         ))}

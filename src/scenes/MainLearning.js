@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { Button, Icon, Spinner } from 'native-base'
-
+import React, { Fragment, useContext, useEffect, useState } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import Dialog from 'react-native-dialog'
 import HeaderExam from '../components/atoms/question/HeaderExam'
 import PronuntciationQuestion from '../components/molecules/learning/PronunciationQuestion'
 import VocabularyQuestion from '../components/molecules/learning/VocabularyQuestion'
 import WriteQuestion from '../components/molecules/learning/WriteQuestion'
 import { QUESTION_TYPE } from '../constants'
-import { Mixins, Colors, Typography } from '../styles'
-import { generateQuestionFromWord } from '../utils'
 import { dictStoreContext, topicStoreContext } from '../contexts'
-import { useNavigation } from '@react-navigation/native'
-import Dialog from 'react-native-dialog'
-import { RoutesConstants } from '../navigations/route-constants'
+import { routeNames } from '../navigations/route-names'
+import { Colors, Mixins, Typography } from '../styles'
+import { generateQuestionFromWord } from '../utils'
 
 // const words = ['human', 'hello', 'morning', 'sunny', 'bye', 'my']
 
@@ -170,7 +169,7 @@ const MainLearning = (props) => {
             onPress={() => {
               setIsDoneTest(false)
               setRefresh(true)
-              navigator.navigate(RoutesConstants.LessonList)
+              navigator.navigate(routeNames.LessonList)
             }}
             color={Colors.PRIMARY}
           />

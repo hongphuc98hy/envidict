@@ -1,7 +1,6 @@
 import * as Speak from 'expo-speech'
-import { AsyncStorage } from 'react-native'
 
-export default class VoiceStore {
+export class VoiceStore {
   constructor() {
     // rate of voice
     this.rate = 1 // double between [0.25-2]
@@ -13,8 +12,6 @@ export default class VoiceStore {
 
     this.speaker = Speak
     this.autoSpeak = false
-
-    return this // when done
   }
 
   setRate(newRate) {

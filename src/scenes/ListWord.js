@@ -1,12 +1,11 @@
-import { List, Spinner, View, Text } from 'native-base'
+import { List, Spinner, Text, View } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
+import { ScrollView, StyleSheet } from 'react-native'
 import WordItem from '../components/atoms/ListItemVocabulary/WordItem'
-import MainLayout from '../components/templates/MainLayout'
-import { dictStoreContext } from '../contexts'
-import { RoutesConstants } from '../navigations/route-constants'
-import { StyleSheet, ScrollView } from 'react-native'
-import { Mixins, Colors, Typography } from '../styles'
 import SearchHeader from '../components/molecules/main-layout/SearchHeader'
+import { dictStoreContext } from '../contexts'
+import { routeNames } from '../navigations/route-names'
+import { Colors, Mixins, Typography } from '../styles'
 
 const wordList = [
   'good',
@@ -72,7 +71,7 @@ const ListWord = ({ navigation }) => {
   }, [])
 
   const onPressListItem = (word) => {
-    navigation.navigate(RoutesConstants.WordView, { word: word })
+    navigation.navigate(routeNames.WordView, { word: word })
   }
 
   const searchByKey = async (key) => {

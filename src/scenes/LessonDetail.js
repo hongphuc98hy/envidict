@@ -1,14 +1,13 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
 import { Button, Icon } from 'native-base'
-
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import LessonContent from '../components/atoms/lesson/LessonContent'
+import { routeNames } from '../navigations/route-names'
 import { Colors, Mixins, Typography } from '../styles'
-import { RoutesConstants } from '../navigations/route-constants'
 
 const LessonDetail = ({ navigation }) => {
   const onClickLearnNow = () => {
-    navigation.navigate(RoutesConstants.LearnNow)
+    navigation.navigate(routeNames.LearnNow)
   }
 
   return (

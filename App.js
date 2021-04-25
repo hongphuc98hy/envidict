@@ -7,7 +7,7 @@ import { Root } from 'native-base'
 import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { topicStoreContext, voiceStoreContext } from './src/contexts'
-import Routes from './src/navigations/Routes'
+import { StackNavigator } from './src/navigations/StackNavigator'
 
 if (!global.btoa) {
   global.btoa = encode
@@ -31,10 +31,11 @@ const App = (props) => {
       />
     )
   }
+
   return (
     <Root>
       <View style={styles.container}>
-        <Routes />
+        <StackNavigator />
       </View>
     </Root>
   )

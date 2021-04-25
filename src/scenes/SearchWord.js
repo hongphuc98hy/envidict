@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react'
-import { View, Text, Content, List, ListItem, Icon, Right, Body, Left } from 'native-base'
+import { Body, Icon, Left, List, ListItem, Right, Text, View } from 'native-base'
+import React, { useContext, useState } from 'react'
+import { AsyncStorage } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-
 import SearchHeader from '../components/molecules/main-layout/SearchHeader'
 import { dictStoreContext, voiceStoreContext } from '../contexts'
-import { RoutesConstants } from '../navigations/route-constants'
-import { AsyncStorage } from 'react-native'
+import { routeNames } from '../navigations/route-names'
 
 const SearchWord = ({ navigation }) => {
   const [key, setKey] = useState('')
@@ -20,11 +19,11 @@ const SearchWord = ({ navigation }) => {
   }
 
   const onGoToWordView = (word) => {
-    navigation.navigate(RoutesConstants.WordView, { word: word })
+    navigation.navigate(routeNames.WordView, { word: word })
   }
 
   const onGoToOnlineTranslation = (text) => {
-    navigation.navigate(RoutesConstants.OnlineTranslation, { initText: text })
+    navigation.navigate(routeNames.OnlineTranslation, { initText: text })
   }
 
   const onPressRow = async (word) => {

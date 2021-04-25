@@ -1,12 +1,14 @@
-export const RoutesConstants = {
+export const routeNames = {
   Home: 'Trang chủ',
-  WordView: 'Thông tin từ',
+  Learning: 'Học tập',
+  LearnNow: 'Học ngay',
   LessonDetail: 'Xem trước',
   LessonList: 'Danh sách bài học',
-  LearnNow: 'Học ngay',
-  MainLearning: 'Luyện tập',
   ListWord: 'Danh sách từ vựng',
+  MainLearning: 'Luyện tập',
   OnlineTranslation: 'Dịch online',
   SearchWord: 'Tìm kiếm',
-  Learning: 'Learning',
+  SignIn: 'Đăng nhập',
+  SignUp: 'Đăng ký',
+  WordView: 'Thông tin từ',
 }

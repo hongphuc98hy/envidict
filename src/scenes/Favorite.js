@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Alert, AsyncStorage, BackHandler } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-import { Alert, BackHandler, AsyncStorage } from 'react-native'
 import ListItemWord from '../components/molecules/favorite/ListItemWord'
 import MainLayout from '../components/templates/MainLayout'
 import { dictStoreContext } from '../contexts'
-import { RoutesConstants } from '../navigations/route-constants'
+import { routeNames } from '../navigations/route-names'
 import { backHandleToExitApp } from '../utils'
 
 const Favorite = ({ navigation }) => {
@@ -42,7 +42,7 @@ const Favorite = ({ navigation }) => {
   }
 
   const onGoToWordView = (word) => {
-    navigation.navigate(RoutesConstants.WordView, { word: word })
+    navigation.navigate(routeNames.WordView, { word: word })
   }
 
   return (
