@@ -3,8 +3,11 @@
     "name": "Envidict",
     "slug": "envidict",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./src/assets/images/icon.png",
@@ -16,8 +19,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
-    "android" : {
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
       "package": "com.balancedteam.envidict",
       "versionCode": 1,
       "permissions": [],
