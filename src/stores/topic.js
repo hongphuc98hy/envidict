@@ -1,10 +1,10 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { action, computed, observable, runInAction } from 'mobx'
-import { db } from '../utils/firestore'
+import { firestoreDb } from '../api/firebase'
 import { Word } from './dict'
 
 export class TopicStore {
-  @observable topicColl = db.collection('topics')
+  @observable topicColl = firestoreDb.collection('topics')
   @observable topics = []
 
   @action
@@ -21,7 +21,7 @@ export class TopicStore {
 }
 
 export class Topic {
-  @observable lessonColl = db.collection('lessons')
+  @observable lessonColl = firestoreDb.collection('lessons')
   @observable id = ''
   @observable name = ''
   @observable lessonIds = []
@@ -52,7 +52,7 @@ export class Topic {
 }
 
 class Lesson {
-  @observable enviColl = db.collection('envi')
+  @observable enviColl = firestoreDb.collection('envi')
   @observable id = ''
   @observable wordIds = []
   @observable learnedWordIds = new Set() // use Set to avoid accidentally duplicated words

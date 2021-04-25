@@ -1,9 +1,9 @@
-import { db } from '../utils/firestore'
+import { firestoreDb } from '../api/firebase'
 
 export class DictStore {
   constructor() {
-    this.envi = db.collection('envi')
-    this.vien = db.collection('vien')
+    this.envi = firestoreDb.collection('envi')
+    this.vien = firestoreDb.collection('vien')
   }
 
   async findWords(s) {

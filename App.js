@@ -1,14 +1,13 @@
 import { Ionicons } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { decode, encode } from 'base-64'
-import { AppLoading } from 'expo'
+import AppLoading from 'expo-app-loading'
 import * as Font from 'expo-font'
-import * as firebase from 'firebase/app'
-import 'firebase/firestore'
 import { Root } from 'native-base'
-import React, { useState, useContext } from 'react'
-import { StatusBar, StyleSheet, View, AsyncStorage } from 'react-native'
-import Routes from './src/navigations/Routes'
+import React, { useContext, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
 import { topicStoreContext, voiceStoreContext } from './src/contexts'
+import Routes from './src/navigations/Routes'
 
 if (!global.btoa) {
   global.btoa = encode
@@ -18,63 +17,49 @@ if (!global.atob) {
 }
 
 const App = (props) => {
-  const [isLoadingComplete, setLoadingComplete] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   const topicStore = useContext(topicStoreContext)
   const voiceStore = useContext(voiceStoreContext)
-
   topicStore.fetch()
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
+  if (!isLoaded) {
     return (
       <AppLoading
-        startAsync={async () => await loadResourcesAsync(voiceStore)}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
+        startAsync={async () => await loadResources(voiceStore)}
+        onFinish={() => setIsLoaded(true)}
+        onError={(error) => console.error(error)}
       />
     )
-  } else {
-    return (
-      <Root>
-        <View style={styles.container}>
-          <StatusBar backgroundColor="red" hidden={false} barStyle="light-content" />
-          <Routes />
-        </View>
-      </Root>
-    )
   }
+  return (
+    <Root>
+      <View style={styles.container}>
+        <Routes />
+      </View>
+    </Root>
+  )
 }
 
-const loadResourcesAsync = async (voiceStore) => {
+const loadResources = async (voiceStore) => {
   await Font.loadAsync({
-    ...Ionicons.font,
     Roboto: require('native-base/Fonts/Roboto.ttf'),
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+    ...Ionicons.font,
   })
-  const voiceSettings = JSON.parse(await AsyncStorage.getItem('envidictVoiceSettings'))
-  if (voiceSettings === null) {
-    await AsyncStorage.setItem(
-      'envidictVoiceSettings',
-      JSON.stringify({ rate: 1, pitch: 1, volume: 1 })
-    )
+
+  let voiceSettings = JSON.parse(await AsyncStorage.getItem('envidictVoiceSettings'))
+  if (!voiceSettings) {
+    voiceSettings = { rate: 1, pitch: 1, volume: 1 }
+    await AsyncStorage.setItem('envidictVoiceSettings', JSON.stringify(voiceSettings))
   }
   voiceStore.setRate(voiceSettings.rate)
   voiceStore.setPitch(voiceSettings.pitch)
   voiceStore.setVolume(voiceSettings.volume)
 }
 
-const handleLoadingError = (error) => {
-  console.warn(error)
-}
-
-const handleFinishLoading = (setLoadingComplete) => {
-  setLoadingComplete(true)
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    marginTop: StatusBar.currentHeight,
   },
 })
 
