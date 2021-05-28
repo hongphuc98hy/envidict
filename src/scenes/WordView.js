@@ -1,6 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Button, Container, Icon, Tab, Tabs, View } from 'native-base'
 import React, { useEffect, useState } from 'react'
-import { AsyncStorage, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import DetailsView from '../components/organisms/word-view/DetailsView'
 import NoteView from '../components/organisms/word-view/NoteView'
 import { routeNames } from '../navigations/route-names'
@@ -71,7 +72,7 @@ const WordView = ({ route, navigation }) => {
         <Button bordered style={styles.customButonIconHeart} onPress={toggleFavorite}>
           <Icon
             style={isFavorite ? styles.customIconFavorite : styles.customIconHeart}
-            name={isFavorite ? 'md-heart' : 'md-heart-empty'}
+            name={isFavorite ? 'md-heart' : 'md-heart-outline'}
           />
         </Button>
         <Button

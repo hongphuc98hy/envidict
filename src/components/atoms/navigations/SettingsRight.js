@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useContext } from 'react'
-import { TouchableOpacity, StyleSheet, Slider, Modal, AsyncStorage } from 'react-native'
-import { Icon, View, Text, Button } from 'native-base'
-import { Colors } from '../../../styles'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Button, Icon, Text, View } from 'native-base'
+import React, { Fragment, useContext, useState } from 'react'
+import { Modal, StyleSheet, TouchableOpacity } from 'react-native'
 import { voiceStoreContext } from '../../../contexts'
+import { Colors } from '../../../styles'
 
 const SettingsRight = () => {
   const voiceStore = useContext(voiceStoreContext)
@@ -62,7 +63,7 @@ const SettingsRight = () => {
   return (
     <Fragment>
       <TouchableOpacity onPress={toggleIsShowSettings}>
-        <Icon style={styles.rootIcon} name="voice" type="MaterialCommunityIcons" />
+        <Icon style={styles.rootIcon} name="settings-voice" type="MaterialIcons" />
       </TouchableOpacity>
       {isShowSettings && (
         <TouchableOpacity onPressOut={toggleIsShowSettings}>
