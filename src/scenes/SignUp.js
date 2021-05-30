@@ -30,6 +30,7 @@ export function SignUp({ navigation }) {
       <Item rounded error={password.length < 8} style={styles.formItem}>
         <Input
           textContentType="password"
+          secureTextEntry={true}
           placeholder="Mật khẩu"
           value={password}
           onChangeText={setPassword}
@@ -39,6 +40,7 @@ export function SignUp({ navigation }) {
       <Item rounded error={passwordConfirmation !== password} style={styles.formItem}>
         <Input
           textContentType="password"
+          secureTextEntry={true}
           placeholder="Xác nhận lại mật khẩu"
           value={passwordConfirmation}
           onChangeText={setPasswordConfirmation}

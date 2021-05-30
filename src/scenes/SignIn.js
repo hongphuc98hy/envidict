@@ -29,6 +29,7 @@ export function SignIn({ route, navigation }) {
       <Item rounded style={styles.formItem}>
         <Input
           textContentType="password"
+          secureTextEntry={true}
           placeholder="Mật khẩu"
           value={password}
           onChangeText={setPassword}
