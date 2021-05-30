@@ -1,6 +1,6 @@
 const URL = 'https://translate.yandex.net/api/v1.5/tr.json/translate'
 const key =
-  'trnsl.1.1.20200402T073604Z.5e0a1c6ef8908ff2.1d9f47a542cbb4137295b6f2632d8e4f17c9ed24'
+  'trnsl.1.1.20210530T093824Z.4a4f6eb96b11a98e.ed8233236b100d0f0a7556847029f3d4e48a7498'
 
 const translate = async (text, from, to) => {
   const lang = from + '-' + to
