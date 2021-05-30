@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { useContext, useEffect, useState } from 'react'
-import { Alert, AsyncStorage, BackHandler } from 'react-native'
+import { Alert, BackHandler } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import ListItemWord from '../components/molecules/favorite/ListItemWord'
 import MainLayout from '../components/templates/MainLayout'
@@ -15,7 +16,7 @@ const Favorite = ({ navigation }) => {
     backHandleToExitApp(Alert, BackHandler)
     let data = []
     const setUp = async () => {
-      const words = JSON.parse(await AsyncStorage.getItem('favoriteWords'))
+      const words = JSON.parse(await AsyncStorage.getItem('favoriteWords')) ?? []
       for (let i = words.length - 1; i >= 0; i--) {
         const result = await dictStore.findWord(words[i])
         data.push(result)
@@ -23,10 +24,10 @@ const Favorite = ({ navigation }) => {
       setWordDetailsList(data)
     }
     setUp()
-  }, [AsyncStorage.getItem('favoriteWords')])
+  }, [])
 
   const onRemoveFavoriteWord = async (word) => {
-    let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords'))
+    let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords')) ?? []
     if (!favoriteWords) {
       favoriteWords = []
     }

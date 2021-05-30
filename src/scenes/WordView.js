@@ -14,7 +14,7 @@ const WordView = ({ route, navigation }) => {
 
   const toggleFavorite = async () => {
     try {
-      let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords'))
+      let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords')) ?? []
       if (isFavorite) {
         const index = favoriteWords.indexOf(word.word)
         if (index !== -1) {
@@ -36,7 +36,7 @@ const WordView = ({ route, navigation }) => {
   useEffect(() => {
     const setUp = async () => {
       try {
-        let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords'))
+        let favoriteWords = JSON.parse(await AsyncStorage.getItem('favoriteWords')) ?? []
         const index = favoriteWords.indexOf(word.word)
         if (index !== -1) {
           setIsFavorite(true)
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 40,
-    height: 40,
+    width: 48,
+    height: 48,
     backgroundColor: Colors.WHITE,
     borderRadius: 40,
     borderColor: Colors.WHITE,
@@ -113,15 +113,14 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 12,
   },
   customButonIconSearch: {
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 40,
-    height: 40,
+    width: 48,
+    height: 48,
     backgroundColor: Colors.BLUE_DARK,
     borderRadius: 40,
     borderColor: Colors.BLUE_DARK,
@@ -135,18 +134,18 @@ const styles = StyleSheet.create({
     elevation: 12,
   },
   customIconHeart: {
-    width: 20,
-    height: 23,
+    width: 24,
+    height: 24,
     color: Colors.BLUE_DARK,
   },
   customIconFavorite: {
-    width: 20,
-    height: 23,
+    width: 24,
+    height: 24,
     color: Colors.WARNING,
   },
   customIconSearch: {
-    width: 17,
-    height: 23,
+    width: 24,
+    height: 24,
     color: Colors.WHITE,
   },
 })

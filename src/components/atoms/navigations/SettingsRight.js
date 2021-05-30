@@ -63,7 +63,7 @@ const SettingsRight = () => {
   return (
     <Fragment>
       <TouchableOpacity onPress={toggleIsShowSettings}>
-        <Icon style={styles.rootIcon} name="settings-voice" type="MaterialIcons" />
+        <Icon style={styles.rootIcon} name="mic" />
       </TouchableOpacity>
       {isShowSettings && (
         <TouchableOpacity onPressOut={toggleIsShowSettings}>

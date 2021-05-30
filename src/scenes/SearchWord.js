@@ -57,7 +57,7 @@ const SearchWord = ({ navigation }) => {
             wordList.map((word, i) => (
               <ListItem key={i} onPress={() => onPressRow(word)} icon>
                 <Left>
-                  <Icon name="dictionary" type="MaterialCommunityIcons" />
+                  <Icon name="magnify" type="MaterialCommunityIcons" />
                 </Left>
                 <Body>
                   <Text>{word.word}</Text>
