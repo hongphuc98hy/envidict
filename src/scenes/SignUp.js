@@ -27,7 +27,11 @@ export function SignUp({ navigation }) {
           onChangeText={setEmail}
         />
       </Item>
-      <Item rounded error={password.length < 8} style={styles.formItem}>
+      <Item
+        rounded
+        error={password.length > 0 && password.length < 8}
+        style={styles.formItem}
+      >
         <Input
           textContentType="password"
           secureTextEntry={true}
@@ -35,7 +39,7 @@ export function SignUp({ navigation }) {
           value={password}
           onChangeText={setPassword}
         />
-        {password.length < 8 && <Icon name="close-circle" />}
+        {password.length > 0 && password.length < 8 ? <Icon name="close-circle" /> : null}
       </Item>
       <Item rounded error={passwordConfirmation !== password} style={styles.formItem}>
         <Input

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Envidict",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "slug": "envidict",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
@@ -14,7 +14,7 @@
     "assetBundlePatterns": ["**/*"],
     "android": {
       "package": "com.hongphuc98hy.envidict",
-      "versionCode": 3
+      "versionCode": 4
     }
   }
 }
