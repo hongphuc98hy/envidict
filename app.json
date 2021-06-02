@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Envidict",
-    "version": "3.0.1",
-    "slug": "envidict",
+    "name": "Viendict",
+    "version": "3.0.2",
+    "slug": "viendict",
     "privacy": "public",
     "platforms": ["ios", "android", "web"],
     "icon": "./src/assets/images/icon.png",
@@ -13,8 +13,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "package": "com.hongphuc98hy.envidict",
-      "versionCode": 4
+      "package": "com.hongphuc98hy.viendict",
+      "versionCode": 5
     }
   }
 }
