@@ -53,7 +53,6 @@ const loadResources = async (voiceStore) => {
     voiceStore.setRate(voiceSettings.rate)
     voiceStore.setPitch(voiceSettings.pitch)
     voiceStore.setVolume(voiceSettings.volume)
-    voiceStore.setAutoSpeak(voiceSettings.autoSpeak)
   }
 }
 

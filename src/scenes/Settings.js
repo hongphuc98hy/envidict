@@ -62,14 +62,6 @@ const Settings = () => {
 
   return (
     <MainLayout autoFocusSearchInput={false} voiceButtonIsVisible={true}>
-      {/* <Content>
-        <Text style={styles.textTile}>Dictionary</Text>
-        <Frame
-          {...extractFrameProps('quickSearch')}
-          nameIcon="search"
-          content="Tra nhanh"
-        />
-      </Content> */}
       <Content>
         <Text style={styles.textTile}>Sound</Text>
       </Content>
@@ -79,32 +71,6 @@ const Settings = () => {
         content="Tự động phát âm"
         enable={stateEnable.sound}
       />
-      {/* <ListItem icon>
-        <Left>
-          <Button info>
-            <Icon active name="mic" />
-          </Button>
-        </Left>
-        <Body>
-          <Text>Cài đặt phát âm</Text>
-        </Body>
-        <Right>
-          <Icon active name="arrow-forward" />
-        </Right>
-      </ListItem> */}
-      {/* <Content>
-        <Text style={styles.textTile}>Notification</Text>
-        <Frame
-          {...extractFrameProps('notification')}
-          nameIcon="alarm"
-          content="Nhắc học từ vựng mỗi ngày"
-        />
-        <Frame
-          {...extractFrameProps('alertEveryDay')}
-          nameIcon="navigate"
-          content="Nhận thông báo từ hàng ngày"
-        />
-      </Content> */}
     </MainLayout>
   )
 }

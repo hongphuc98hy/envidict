@@ -21,10 +21,6 @@ export class VoiceStore {
     this.volume = newVolume
   }
 
-  setAutoSpeak(value) {
-    this.autoSpeak = value
-  }
-
   toggleAutoSpeak() {
     this.autoSpeak = !this.autoSpeak
   }
