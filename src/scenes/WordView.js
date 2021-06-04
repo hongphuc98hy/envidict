@@ -21,9 +21,6 @@ const WordView = ({ route, navigation }) => {
           favoriteWords.splice(index, 1)
         }
       } else {
-        if (favoriteWords === null) {
-          favoriteWords = []
-        }
         favoriteWords.push(word.word)
       }
       await AsyncStorage.setItem('favoriteWords', JSON.stringify(favoriteWords))

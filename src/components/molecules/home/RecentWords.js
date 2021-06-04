@@ -1,8 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { List, ListItem, Text, View } from 'native-base'
 import React, { useContext, useEffect, useState } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
+import { StyleSheet } from 'react-native'
 import * as Animatable from 'react-native-animatable'
-
 import { dictStoreContext } from '../../../contexts'
 import { Colors } from '../../../styles'
 import MiniCard from '../word/MiniCard'
@@ -16,7 +16,7 @@ const RecentWords = (props) => {
   useEffect(() => {
     let recentWordList = []
     const setupRecentWord = async () => {
-      const words = JSON.parse(await AsyncStorage.getItem('recentWords'))
+      const words = JSON.parse(await AsyncStorage.getItem('recentWords')) ?? []
       for (let i = words.length - 1; i >= 0; i--) {
         const result = await dictStore.findWord(words[i])
         if (result) {
@@ -26,7 +26,7 @@ const RecentWords = (props) => {
       setRecentsWord(recentWordList)
     }
     setupRecentWord()
-  }, [AsyncStorage.getItem('recentWords')])
+  }, [recentWords])
 
   return (
     <View style={styles.container}>

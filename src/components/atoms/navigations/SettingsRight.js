@@ -45,18 +45,12 @@ const SettingsRight = () => {
   }
 
   const onSaveSettings = async () => {
-    let voiceSettings = JSON.parse(await AsyncStorage.getItem('envidictVoiceSettings'))
-    if (voiceSettings === null) {
-      await AsyncStorage.setItem(
-        'envidictVoiceSettings',
-        JSON.stringify({ rate: 1, pitch: 1, volume: 1 })
-      )
-    } else {
-      voiceSettings.rate = voiceStore.rate
-      voiceSettings.pitch = voiceStore.pitch
-      voiceSettings.volume = voiceStore.volume
-      await AsyncStorage.setItem('envidictVoiceSettings', JSON.stringify(voiceSettings))
-    }
+    let voiceSettings =
+      JSON.parse(await AsyncStorage.getItem('envidictVoiceSettings')) ?? {}
+    voiceSettings.rate = voiceStore.rate
+    voiceSettings.pitch = voiceStore.pitch
+    voiceSettings.volume = voiceStore.volume
+    await AsyncStorage.setItem('envidictVoiceSettings', JSON.stringify(voiceSettings))
     toggleIsShowSettings()
   }
 

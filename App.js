@@ -49,13 +49,12 @@ const loadResources = async (voiceStore) => {
   })
 
   let voiceSettings = JSON.parse(await AsyncStorage.getItem('envidictVoiceSettings'))
-  if (!voiceSettings) {
-    voiceSettings = { rate: 1, pitch: 1, volume: 1 }
-    await AsyncStorage.setItem('envidictVoiceSettings', JSON.stringify(voiceSettings))
+  if (voiceSettings) {
+    voiceStore.setRate(voiceSettings.rate)
+    voiceStore.setPitch(voiceSettings.pitch)
+    voiceStore.setVolume(voiceSettings.volume)
+    voiceStore.setAutoSpeak(voiceSettings.autoSpeak)
   }
-  voiceStore.setRate(voiceSettings.rate)
-  voiceStore.setPitch(voiceSettings.pitch)
-  voiceStore.setVolume(voiceSettings.volume)
 }
 
 const styles = StyleSheet.create({

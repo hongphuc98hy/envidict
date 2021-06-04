@@ -2,16 +2,11 @@ import * as Speak from 'expo-speech'
 
 export class VoiceStore {
   constructor() {
-    // rate of voice
     this.rate = 1 // double between [0.25-2]
-
-    // pitch
     this.pitch = 1 // double between [0.25-2]
-
-    this.volume = 0.5
-
-    this.speaker = Speak
+    this.volume = 1
     this.autoSpeak = false
+    this.speaker = Speak
   }
 
   setRate(newRate) {
@@ -24,6 +19,10 @@ export class VoiceStore {
 
   setVolume(newVolume) {
     this.volume = newVolume
+  }
+
+  setAutoSpeak(value) {
+    this.autoSpeak = value
   }
 
   toggleAutoSpeak() {

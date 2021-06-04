@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Constants from 'expo-constants'
+import { Button, Icon, Text, Toast, View } from 'native-base'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet } from 'react-native'
 import Textarea from 'react-native-textarea'
-import { View, Button, Text, Icon, Toast } from 'native-base'
-
 import { Colors } from '../../../styles/index'
 
 const NoteView = (props) => {
@@ -13,15 +13,10 @@ const NoteView = (props) => {
 
   useEffect(() => {
     const setUp = async () => {
-      const notes = JSON.parse(await AsyncStorage.getItem('envidictNotes'))
-      let savedNote
-      if (notes === null) {
-        await AsyncStorage.setItem('envidictNotes', JSON.stringify({}))
-      } else {
-        savedNote = notes[word.word]
-        if (savedNote) {
-          setNote(savedNote)
-        }
+      const notes = JSON.parse(await AsyncStorage.getItem('envidictNotes')) ?? {}
+      const savedNote = notes[word.word]
+      if (savedNote) {
+        setNote(savedNote)
       }
     }
 
@@ -29,7 +24,7 @@ const NoteView = (props) => {
   }, [word])
 
   const onSaveNote = async () => {
-    let notes = JSON.parse(await AsyncStorage.getItem('envidictNotes'))
+    let notes = JSON.parse(await AsyncStorage.getItem('envidictNotes')) ?? {}
     notes[word.word] = note
     try {
       await AsyncStorage.setItem('envidictNotes', JSON.stringify(notes))

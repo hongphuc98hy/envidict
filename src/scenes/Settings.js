@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Text, StyleSheet, Alert, BackHandler } from 'react-native'
-import { ListItem, Icon, Left, Body, Right, Switch, Button, Content } from 'native-base'
-
+import { Body, Button, Content, Icon, Left, ListItem, Right, Switch } from 'native-base'
+import React, { useContext, useEffect, useState } from 'react'
+import { Alert, BackHandler, StyleSheet, Text } from 'react-native'
 import MainLayout from '../components/templates/MainLayout'
-import { backHandleToExitApp } from '../utils'
-import { Colors, Typography } from '../styles'
 import { voiceStoreContext } from '../contexts'
+import { Colors, Typography } from '../styles'
+import { backHandleToExitApp } from '../utils'
 
 const Frame = (props) => {
   const { enable, nameIcon, toggleSwitch, content } = props

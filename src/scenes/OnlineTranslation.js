@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Text, View, Textarea, Row, Icon, Left, Right, Button, Toast } from 'native-base'
-import { StyleSheet, TouchableOpacity, ScrollView, Clipboard } from 'react-native'
-
-import LanguagePicker from '../components/atoms/online-translation.js/LanguagePicker'
-import { Colors } from '../styles'
+import { Button, Icon, Left, Right, Row, Text, Textarea, Toast, View } from 'native-base'
+import React, { useContext, useEffect, useState } from 'react'
+import { Clipboard, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
 import { translateOnlineAPI } from '../api'
+import LanguagePicker from '../components/atoms/online-translation.js/LanguagePicker'
 import { voiceStoreContext } from '../contexts'
+import { Colors } from '../styles'
 
 const OnlineTranslation = ({ route, navigation }) => {
   const voiceStore = useContext(voiceStoreContext)
@@ -38,7 +37,7 @@ const OnlineTranslation = ({ route, navigation }) => {
     setTranslatedText('Đang dịch văn bản...')
     const result = await translateOnlineAPI.translate(text, fromLang, toLang)
     setTranslatedText(result)
-    if (voiceStore.autoSpeak === true) {
+    if (voiceStore.autoSpeak) {
       voiceStore.speak(translatedText, toLang)
     }
   }

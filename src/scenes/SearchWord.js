@@ -1,6 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Body, Icon, Left, List, ListItem, Right, Text, View } from 'native-base'
 import React, { useContext, useState } from 'react'
-import { AsyncStorage } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import SearchHeader from '../components/molecules/main-layout/SearchHeader'
 import { dictStoreContext, voiceStoreContext } from '../contexts'
@@ -28,13 +28,9 @@ const SearchWord = ({ navigation }) => {
 
   const onPressRow = async (word) => {
     try {
-      let recentWords = JSON.parse(await AsyncStorage.getItem('recentWords'))
-      if (recentWords !== null) {
-        recentWords.push(word.word)
-        recentWords = [...new Set(recentWords)]
-      } else {
-        recentWords = []
-      }
+      let recentWords = JSON.parse(await AsyncStorage.getItem('recentWords')) ?? []
+      recentWords.push(word.word)
+      recentWords = [...new Set(recentWords)]
       await AsyncStorage.setItem('recentWords', JSON.stringify(recentWords))
       onGoToWordView(word)
     } catch (error) {
