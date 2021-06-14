@@ -104,6 +104,7 @@ const LessonList = (props) => {
                 key={lesson.id}
                 courseId={coursesId}
                 lessonId={lesson.id}
+                index={i}
                 name={`Bài ${i + 1}`}
               />
             ))}

@@ -16,6 +16,8 @@ import {
 import { Typography, Colors } from '../../../styles'
 
 const Lesson = (props) => {
+  const { index } = props
+  const progress = index == 0 ? 10 : index == 1 ? 8 : 0
   return (
     <Card style={styles.card}>
       <CardItem>
@@ -33,12 +35,12 @@ const Lesson = (props) => {
               <ProgressBarAndroid
                 styleAttr="Horizontal"
                 indeterminate={false}
-                progress={0.7}
+                progress={progress / 10}
                 color={Colors.SUCCESS}
               ></ProgressBarAndroid>
             </Col>
             <Col size={40}>
-              <Text style={styles.information}>Đã thuộc: 7/10</Text>
+              <Text style={styles.information}>{'Đã thuộc: ' + progress + '/10'}</Text>
             </Col>
           </Grid>
         </Body>
